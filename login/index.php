@@ -1,4 +1,4 @@
-<?php?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="icons/fontawesome-free-5.13.0-web/css/all.css">
 </head>
 <body>
-	<form action="home.php" method="post">
+	<form action="db.php" method="post">
 	<div class="bg"></div>
 	<div class="login-box">
 		<h1>Login</h1>
@@ -20,11 +20,10 @@
 <i class="fas fa-lock"></i>
 			<input type="password" placeholder="Password" name="password" value="" required>
 </div>
-<input class="butt" type="submit" name="" value="Sign in" required>
+<input class="butt" type="submit" name="submit" value="Sign in" required>
 <a href="#">Forgot passsword ? </a> <br/>
 <a href="#">Sign up ?</a>
 </div>
 </form>
 </body>
 </html>	
-<?php?>
