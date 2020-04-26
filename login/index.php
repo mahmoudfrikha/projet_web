@@ -22,7 +22,7 @@
 </div>
 <input class="butt" type="submit" name="submit" value="Sign in" required>
 <a href="#">Forgot passsword ? </a> <br/>
-<a href="#">Sign up ?</a>
+<a href="signup.php">Sign up ?</a>
 </div>
 </form>
 </body>

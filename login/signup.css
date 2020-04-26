@@ -97,3 +97,19 @@ color: #fff;
 cursor: pointer;
 padding: 0;
 }
+.message
+{
+	color: red;
+}
+.message i
+{
+
+width: 30px;
+padding-right: 5px; 
+left: auto;
+top: 90%;	
+}
+.message p
+{
+	padding-left: 20px;
+}
