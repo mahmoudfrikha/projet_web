@@ -34,8 +34,8 @@
             <input type="text" name="home" placeholder="Home Adress" required>
             <input type="submit" name="signupbut" value="Sign up">
             <div class= "message">
-            <i class="fas fa-exclamation"></i>
-            <p><?php echo $_SESSION['message'] ?></p>
+           
+            <p><?php if(isset($_GET['msg'])){ echo $_GET['msg']; } ?></p>
         </div>
 	</div>
     </form>

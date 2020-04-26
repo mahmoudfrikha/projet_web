@@ -23,7 +23,7 @@ catch(Exception $e)
  $password = $_POST["password"]; 
  try
  {
- $result = $db->prepare('SELECT * FROM login where username = :username');
+ $result = $db->prepare('SELECT * FROM users where username = :username');
  $result->bindParam(':username',$username);
  $result->execute();
 if ($result->rowCount() == 1)
@@ -36,7 +36,11 @@ if ($result->rowCount() == 1)
 
   		$_SESSION['username'] = $username;
   		$_SESSION['id'] = $data['user_id'];
-    	header('location:home.php');
+  		$_SESSION['role'] = $data['role'];
+  		if ( $data['role'] == "client")
+
+    	header('location:homeClient.php');
+    else header('location:homeAdmin.php');
  	}
  	else
   	{
