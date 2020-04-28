@@ -21,7 +21,7 @@
 			<input type="password" placeholder="Password" name="password" value="" required>
 </div>
 <input class="butt" type="submit" name="submit" value="Sign in" required>
-<a href="#">Forgot passsword ? </a> <br/>
+<a href="resetpassword/resetform.php">Forgot passsword ? </a> <br/>
 <a href="signup.php">Sign up ?</a>
 </div>
 </form>
