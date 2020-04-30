@@ -1,4 +1,11 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'resetpassword/PHPMailer/src/Exception.php';
+require 'resetpassword/PHPMailer/src/PHPMailer.php';
+require 'resetpassword/PHPMailer/src/SMTP.php';
 session_start();
 if (isset($_POST['signupbut']))
 {
@@ -41,10 +48,41 @@ catch(Exception $e)
     {
         if ( $nbuser == 0)
         {
+          $data = $result->fetch(PDO::FETCH_ASSOC);
+        $vkey = md5(time().$username);
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users (email, username, password, phone_number, home_adress)VALUES ('$email', '$username', '$password', '$phone_number', '$home_adress')";
+        $sql = "INSERT INTO users (email, vkey, username, password, phone_number, home_adress)VALUES ('$email','$vkey', '$username', '$password', '$phone_number', '$home_adress')";
         $db->exec($sql);
-        header("location: index.php");
+        // sending email
+         $to = $email;
+         $mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();      
+    $mail->Host       = 'smtp.gmail.com';                    
+    $mail->SMTPAuth   = true;                                 
+    $mail->Username   = 'benna.resto@gmail.com';        
+    $mail->Password   = 'Mahmoud27410942';                
+    $mail->SMTPSecure = 'ssl';         
+     $mail->Port      = 465;              
+    $mail->setFrom('benna.resto@gmail.com', 'Benna');
+    $mail->addAddress($to);     
+    $mail->addReplyTo('no-reply@benna.com', 'no reply');
+   $url = "http://" . $_SERVER["HTTP_HOST"] . dirname($_SERVER["PHP_SELF"]) . "/verify.php?vkey=$vkey";
+    $mail->isHTML(true);                                  
+    $mail->Subject = 'email verification';
+    $mail->Body    = "<h1>Account verification </h1>
+                      click <a href='$url'>this link</a> to verify your account";
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+ echo '<script>alert("an email has been sent check your email")</script>' ;
+    
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+        //header("location: verify.php");
+
    	     }
         else { header("location: signup.php?msg=username already used"); exit; 
      }         
@@ -60,6 +98,6 @@ catch(Exception $e)
  {
  print_r($e->getMessage());
  }
- echo $_SESSION['message'];
+ //echo $_SESSION['message'];
 }
 ?>

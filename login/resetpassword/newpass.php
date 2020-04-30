@@ -54,7 +54,9 @@ try{
  			$result->bindParam(':email',$email);
         	$result->execute(); 
 			
-			exit("Password updated");
+    		//header("location: http://localhost/projet_web/login/index.php");
+			echo '<script>alert("Password updated")</script>'; 
+			exit("");
  		    
  		}
 	}

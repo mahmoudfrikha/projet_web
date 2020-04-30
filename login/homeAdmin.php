@@ -2,8 +2,8 @@
 session_start();
 if (isset($_SESSION['id']) AND ( $_SESSION['role'] == "admin" ))
 {
-echo "hello Admin :";
-echo $_SESSION["id"];
+echo "hello Admin: ";
+echo $_SESSION["username"];
 }
 else 
 {

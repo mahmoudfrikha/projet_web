@@ -21,8 +21,17 @@
 			<input type="password" placeholder="Password" name="password" value="" required>
 </div>
 <input class="butt" type="submit" name="submit" value="Sign in" required>
-<a href="resetpassword/resetform.php">Forgot passsword ? </a> <br/>
-<a href="signup.php">Sign up ?</a>
+ <div class="extention">
+<a href="resetpassword/resetform.php" style="color: #daebc7;
+    text-align: left;
+    text-shadow: -1px 1px 12px black;">Forgot passsword ? </a> <br/>
+<a href="signup.php" style="color: #daebc7;
+    text-align: left;
+    text-shadow: -1px 1px 12px black;">Sign up ?</a>
+</div>
+           
+            <p style="color: red;"><?php if(isset($_GET['msg'])){ echo $_GET['msg']; sleep(5); echo "";} ?></p>
+        
 </div>
 </form>
 </body>

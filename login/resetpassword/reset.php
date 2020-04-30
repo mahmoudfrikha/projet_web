@@ -80,12 +80,14 @@ try {
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Reset password link has been sent';
+  
     
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-header("location: http://localhost/login/index.php");
+
+header("location: http://localhost/projet_web/login/index.php");
+echo '<script>alert("A mail has been sent")</script>'; 
 exit();
   }
  else 
