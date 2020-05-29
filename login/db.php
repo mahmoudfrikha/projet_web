@@ -41,7 +41,7 @@ if (isset($_POST['submit']))
         {     
             if ($data['verified'] == 1)
             {
-    	         header('location:homeClient.php');
+    	         header('location:../steakshop/index.php');
             }
             else header('location: index.php?msg=account not verified. check your email');
         }
@@ -50,7 +50,7 @@ if (isset($_POST['submit']))
             if ($data['verified'] == 1)
           {
       
-            header('location:homeAdmin.php');
+            header('location: ../concept-master1/index.php');
  	        }
         }
       }
