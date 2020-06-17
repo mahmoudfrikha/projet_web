@@ -1,4 +1,9 @@
-<HTML>
+<?PHP
+include "../core/CategorieC.php";
+$Categorie1C=new CategorieC();
+$listeCategorie=$Categorie1C->afficherCategories();
+ 
+?>
 <head>
 	<link rel="stylesheet" href="/bs/css/bootstrap.min.css" >
 
@@ -8,33 +13,33 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
-<?PHP
-include "../core/ProduitC.php";
-$Produit1C=new ProduitC();
-$listeProduit=$Produit1C->afficherProduits();
-
-//var_dump($listeEmployes->fetchAll());
-?>
 <table class="table table-hover">
 <tr>
-<td>produit ID</td>
-<td>nom Produit</td>
-<td>type Produit</td>
-<td>prix Produit</td>
+<td>categorie ID</td>
+<td>Nom categorie</td>
+<td>Type categorie</td>
+
 </tr>
 
 <?PHP
-foreach($listeProduit as $row){
+foreach($listeCategorie as $row){
 	?>
 	<tr>
-	<td><?PHP echo $row['produitID']; ?></td>
-	<td><?PHP echo $row['nomProduit']; ?></td>
-	<td><?PHP echo $row['typeProduit']; ?></td>
-	<td><?PHP echo $row['prixProduit']; ?>
-	</tr>
+	<td><?PHP echo $row['categorieID']; ?></td>
+	<td><?PHP echo $row['nomCategorie']; ?></td>
+	<td><?PHP echo $row['type']; ?></td>
+	<td><form method="POST" action="supprimerCategorie.php">
+	<input type="submit" class="btn btn-outline-danger" name="supprimer" value="supprimer">
+	<input type="hidden" value="<?PHP echo $row['categorieID']; ?>" name="categorieID">
+	</form>
+	</td>
+	<td><a class="btn btn-primary" role="button" href="modifierCategorie.php?categorieID=<?PHP echo $row['categorieID']; ?>">
+	Modifier</a></td>
+	
+		</tr>
 	<?PHP
 }
 ?>
 </table>
+
 

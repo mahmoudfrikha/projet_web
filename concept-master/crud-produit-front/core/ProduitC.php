@@ -55,6 +55,18 @@ class ProduitC {
         }	
 	}
 	
+	function afficherProduitsTri($triCriteria){
+		$sql="SElECT produit.produitID,  produit.nomProduit, produit.typeProduit, produit.prixProduit, categorie.nomCategorie From produit, categorie Where produit.categorie_id =categorie.categorieID ORDER BY produit." .$triCriteria;
+		
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
 	function supprimerProduit($produitID){
 		$sql="DELETE FROM produit where produitID= :produitID";
 		$db = config::getConnexion();
